@@ -1,0 +1,26 @@
+language: node_js
+node_js:
+  - 14
+
+services:
+  - docker
+
+# Pre-testing installs
+install:
+  - echo "Nothing to install"
+
+before_script:
+  - echo "No tests"
+
+script:
+  - docker --version
+  - docker build -t travis_ci .
+  - docker tag travis_ci horllymobile/travis_ci
+
+
+after_success:
+  echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  docker push horllymobile/travis_ci
+
+
+
