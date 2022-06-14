@@ -15,7 +15,7 @@ before_script:
 script:
   - docker --version
   - docker build -t my_travis_ci .
-  - docker tag travis_ci horllymobile/my_travis_ci
+  - docker tag my_travis_ci horllymobile/my_travis_ci:latest
 
 
 after_success:
