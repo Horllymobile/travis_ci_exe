@@ -14,13 +14,13 @@ before_script:
 
 script:
   - docker --version
-  - docker build -t travis_ci .
-  - docker tag travis_ci horllymobile/travis_ci
+  - docker build -t my_travis_ci .
+  - docker tag travis_ci horllymobile/my_travis_ci
 
 
 after_success:
   echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  docker push horllymobile/travis_ci
+  docker push horllymobile/my_travis_ci
 
 
 
